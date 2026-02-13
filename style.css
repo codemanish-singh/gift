@@ -1,0 +1,291 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight */
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            min-height: 100vh;
+            min-height: -webkit-fill-available; /* For mobile browsers */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 10px;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            padding: min(30px, 5vw); /* Responsive padding */
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            position: relative;
+            margin: 10px;
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+        }
+        
+        h1 {
+            color: #e91e63;
+            font-size: clamp(2rem, 5vw, 3.2rem); /* Responsive font size */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
+            word-wrap: break-word;
+        }
+        
+        .message {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: clamp(15px, 3vw, 30px);
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .valentine-btn {
+            padding: clamp(12px, 3vw, 18px) clamp(25px, 5vw, 45px);
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            min-height: 60px;
+            touch-action: manipulation; /* Better touch handling */
+        }
+        
+        .yes-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .yes-btn:hover, .yes-btn:active {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        
+        .no-btn {
+            background-color: #f44336;
+            color: white;
+            position: relative;
+            transition: all 0.5s ease !important; /* Ensure smooth movement */
+        }
+        
+        .no-btn:hover, .no-btn:active {
+            background-color: #d32f2f;
+        }
+        
+        .hidden-message {
+            display: none;
+            background-color: #ffebee;
+            padding: clamp(15px, 3vw, 25px);
+            border-radius: 15px;
+            margin-top: 30px;
+            border-left: 6px solid #e91e63;
+            text-align: left;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hidden-message h2 {
+            color: #e91e63;
+            margin-bottom: 15px;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+        }
+        
+        .hidden-message p {
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .details {
+            background-color: #fce4ec;
+            padding: clamp(10px, 2vw, 15px);
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+        }
+        
+        .details p {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .heart-balloon {
+            position: fixed; /* Changed from absolute to fixed for better mobile */
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: #e91e63;
+            z-index: 1;
+            animation: float 15s infinite linear;
+            filter: drop-shadow(0 0 5px rgba(233, 30, 99, 0.5));
+            pointer-events: none; /* Prevent interaction */
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(20vw, 20vh) rotate(90deg);
+            }
+            50% {
+                transform: translate(10vw, 40vh) rotate(180deg);
+            }
+            75% {
+                transform: translate(-10vw, 20vh) rotate(270deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            text-align: center;
+            padding: 0 10px;
+        }
+        
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .valentine-btn {
+                min-width: 140px;
+            }
+            
+            .yes-btn:active {
+                transform: scale(0.98);
+            }
+        }
+        
+        /* Larger mobile devices */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+                justify-content: flex-start;
+                padding-top: max(20px, env(safe-area-inset-top));
+                padding-bottom: max(20px, env(safe-area-inset-bottom));
+            }
+            
+            .container {
+                margin: 10px auto;
+                max-width: 95%;
+            }
+            
+            .heart-balloon {
+                display: none; /* Hide floating hearts on very small screens */
+            }
+            
+            /* Show fewer hearts on mobile */
+            .heart-balloon:nth-child(-n+3) {
+                display: block;
+            }
+        }
+        
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            
+            .valentine-btn {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 15px;
+            }
+            
+            .hidden-message {
+                text-align: center;
+            }
+            
+            .details p {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            /* Adjust heart balloon positions for mobile */
+            .heart-balloon {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Very small devices (iPhone SE, etc) */
+        @media (max-width: 320px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .message {
+                font-size: 1.1rem;
+            }
+            
+            .valentine-btn {
+                font-size: 1.2rem;
+                padding: 12px 20px;
+            }
+        }
+        
+        /* Landscape orientation */
+        @media (max-height: 600px) and (orientation: landscape) {
+            body {
+                justify-content: flex-start;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+            
+            .container {
+                padding: 15px;
+                margin: 5px;
+            }
+            
+            h1 {
+                margin-bottom: 10px;
+            }
+            
+            .message {
+                margin-bottom: 20px;
+            }
+            
+            .buttons-container {
+                margin-bottom: 15px;
+            }
+            
+            .heart-balloon {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Prevent text size adjustment on mobile */
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
